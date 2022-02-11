@@ -1,3 +1,7 @@
+// if (!this.onDurationCalled) {
+//   this.props.onDuration(duration)
+//   this.onDurationCalled = true
+// }
 <h1 align='center'>
   ReactPlayer
 </h1>
