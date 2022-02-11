@@ -70,6 +70,11 @@ export default class FilePlayer extends Component {
       player.setAttribute('webkit-playsinline', '')
       player.setAttribute('x5-playsinline', '')
     }
+    player.addEventListener('canplay', this.onCheckLoading)
+    player.addEventListener('seeked', this.onCheckLoading)
+    player.addEventListener('playing', this.onCheckLoading)
+    player.addEventListener('stalled', this.onCheckLoading)
+    player.addEventListener('waiting', this.onCheckLoading)
   }
 
   removeListeners (player, url) {
@@ -88,6 +93,11 @@ export default class FilePlayer extends Component {
     if (!this.shouldUseHLS(url)) { // onReady is handled by hls.js
       player.removeEventListener('canplay', this.onReady)
     }
+    player.removeEventListener('canplay', this.onCheckLoading)
+    player.removeEventListener('seeked', this.onCheckLoading)
+    player.removeEventListener('playing', this.onCheckLoading)
+    player.removeEventListener('stalled', this.onCheckLoading)
+    player.removeEventListener('waiting', this.onCheckLoading)
   }
 
   // Proxy methods to prevent listener leaks
@@ -100,6 +110,8 @@ export default class FilePlayer extends Component {
   onError = (...args) => this.props.onError(...args)
   onPlayBackRateChange = (event) => this.props.onPlaybackRateChange(event.target.playbackRate)
   onEnablePIP = (...args) => this.props.onEnablePIP(...args)
+  onCheckLoading = e => this.props.onCheckLoading(['stalled', 'waiting'].includes(e.type))
+  // onCheckLoading = (...args) => this.props.onCheckLoading(...args)
 
   onDisablePIP = e => {
     const { onDisablePIP, playing } = this.props

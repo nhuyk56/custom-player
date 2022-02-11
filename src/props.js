@@ -87,6 +87,7 @@ export const propTypes = {
   onEnded: func,
   onError: func,
   onDuration: func,
+  onCheckLoading: func,
   onSeek: func,
   onPlaybackRateChange: func,
   onProgress: func,

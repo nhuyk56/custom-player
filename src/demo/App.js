@@ -25,7 +25,8 @@ class App extends Component {
     loaded: 0,
     duration: 0,
     playbackRate: 1.0,
-    loop: false
+    loop: false,
+    loading: false
   }
 
   load = url => {
@@ -132,6 +133,11 @@ class App extends Component {
     this.setState({ duration })
   }
 
+  handleCheckLoading = (loading) => {
+    console.log('onCheckLoading', loading)
+    this.setState({ loading })
+  }
+
   handleClickFullscreen = () => {
     screenfull.request(findDOMNode(this.player))
   }
@@ -149,7 +155,7 @@ class App extends Component {
   }
 
   render () {
-    const { url, playing, controls, light, volume, muted, loop, played, loaded, duration, playbackRate, pip } = this.state
+    const { url, playing, controls, light, volume, muted, loop, played, loaded, duration, playbackRate, pip, loading } = this.state
     const SEPARATOR = ' · '
 
     return (
@@ -158,6 +164,7 @@ class App extends Component {
           <h1>ReactPlayer Demo</h1>
           <div className='player-wrapper'>
             <ReactPlayer
+              config={{forceAudio: true}}
               ref={this.ref}
               className='react-player'
               width='100%'
@@ -184,6 +191,7 @@ class App extends Component {
               onError={e => console.log('onError', e)}
               onProgress={this.handleProgress}
               onDuration={this.handleDuration}
+              onCheckLoading={this.handleCheckLoading}
             />
           </div>
 
@@ -210,7 +218,7 @@ class App extends Component {
                 </td>
               </tr>
               <tr>
-                <th>Seek</th>
+                <th>Seek | {loading ? 'loading' : 'loaded'}</th>
                 <td>
                   <input
                     type='range' min={0} max={0.999999} step='any'
@@ -363,7 +371,8 @@ class App extends Component {
                   {this.renderLoadButton('https://filesamples.com/samples/video/ogv/sample_640x360.ogv', 'ogv')}
                   {this.renderLoadButton('https://storage.googleapis.com/media-session/elephants-dream/the-wires.mp3', 'mp3')}
                   <br />
-                  {this.renderLoadButton('https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8', 'HLS (m3u8)')}
+                  {this.renderLoadButton('https://mecdn.xyz/?s=648c12e26b8df711040b35e8fb6c8415&b=9495a7605817cb6acd7373e610e4c066&i=index.m3u8', '1. HLS (m3u8)')}
+                  {this.renderLoadButton('https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8', '2. HLS (m3u8)')}
                   {this.renderLoadButton('http://dash.edgesuite.net/envivio/EnvivioDash3/manifest.mpd', 'DASH (mpd)')}
                 </td>
               </tr>
