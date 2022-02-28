@@ -13,7 +13,7 @@ export interface FileConfig {
   tracks?: TrackProps[]
   forceVideo?: boolean
   forceAudio?: boolean
-  noDurationInfinity?: boolean
+  hasDurationInfinity?: boolean
   forceHLS?: boolean
   forceDASH?: boolean
   forceFLV?: boolean
