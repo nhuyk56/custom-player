@@ -14,7 +14,7 @@ import Duration from './Duration'
 
 class App extends Component {
   state = {
-    url: null,
+    url: (playlist && playlist[0] && playlist[0].src) || null,
     pip: false,
     playing: true,
     controls: false,
