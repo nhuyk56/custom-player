@@ -167,7 +167,7 @@ export const defaultProps = {
       tracks: [],
       forceVideo: false,
       forceAudio: false,
-      hasDurationInfinity: true,
+      hasDurationInfinity: false,
       forceHLS: false,
       forceDASH: false,
       forceFLV: false,
