@@ -224,7 +224,8 @@ export default class Player extends Component {
   handleDurationCheck = () => {
     clearTimeout(this.durationCheckTimeout)
     const duration = this.getDuration()
-    if (duration && duration !== Infinity) {
+    const checkDurationInfinity = !this.propsconfig.noDurationInfinity && this.player.isDurationInfinity()
+    if (duration && checkDurationInfinity) {
       if (!this.onDurationCalled) {
         this.props.onDuration(duration)
         this.onDurationCalled = true

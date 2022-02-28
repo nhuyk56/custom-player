@@ -286,6 +286,10 @@ export default class FilePlayer extends Component {
     }
   }
 
+  isDurationInfinity () {
+    return this.player?.duration === Infinity
+  }
+
   getDuration () {
     if (!this.player) return null
     const { duration, seekable } = this.player

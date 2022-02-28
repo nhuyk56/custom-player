@@ -164,7 +164,7 @@ class App extends Component {
           <h1>ReactPlayer Demo</h1>
           <div className='player-wrapper'>
             <ReactPlayer
-              config={{forceAudio: true}}
+              config={{forceAudio: true, noDurationInfinity: true}}
               ref={this.ref}
               className='react-player'
               width='100%'
