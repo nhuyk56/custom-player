@@ -107,7 +107,10 @@
     "load-script": "^1.0.0",
     "memoize-one": "^5.1.1",
     "prop-types": "^15.7.2",
-    "react-fast-compare": "^3.0.1"
+    "react-fast-compare": "^3.0.1",
+    "@emotion/react": "^11.8.1",
+    "@emotion/styled": "^11.8.1",
+    "@mui/material": "^5.4.3"
   },
   "postcss": {
     "plugins": {

@@ -4,13 +4,14 @@ import { hot } from 'react-hot-loader'
 import screenfull from 'screenfull'
 
 import './reset.css'
-import './defaults.css'
-import './range.css'
-import './App.css'
+// import './defaults.css'
+// import './range.css'
+// import './App.css'
 
 import { version } from '../../package.json'
 import ReactPlayer from '../index'
 import Duration from './Duration'
+import MusicPlayerSlider from './MusicPlayerSlider'
 
 class App extends Component {
   state = {
@@ -438,6 +439,8 @@ class App extends Component {
           {SEPARATOR}
           <a href='https://www.npmjs.com/package/react-player'>npm</a>
         </footer>
+
+        <MusicPlayerSlider></MusicPlayerSlider>
       </div>
     )
   }
